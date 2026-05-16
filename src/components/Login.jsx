@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../lib/Api';
-import {Box,Button,Container,Paper,TextField,Typography,
+import { Alert, Box, Button, Container, Paper, TextField, Typography,
 } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -11,6 +11,7 @@ export default function Login() {
 
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ errorMsg, setErrorMsg ] = useState("");
 
     const navigate = useNavigate()
 
@@ -28,9 +29,9 @@ export default function Login() {
         } catch (error) {
             console.error("Erro: ", error.response?.data || error.message)
             if(error.response?.status === 400) {
-                alert("Credenciais invalidas")
+                setErrorMsg("Credenciais inválidas")
             } else {
-                alert("Erro ao realizar login")
+                setErrorMsg("Erro ao realizar login")
             }
         }
     }
@@ -79,6 +80,12 @@ export default function Login() {
                             fullWidth
                             variant="outlined"
                         />
+
+                        {errorMsg && (
+                            <Alert severity="error" onClose={() => setErrorMsg('')}>
+                                {errorMsg}
+                            </Alert>
+                        )}
 
                         <Button
                             type="submit"
