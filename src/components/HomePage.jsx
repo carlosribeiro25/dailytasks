@@ -1,7 +1,14 @@
+import Navegation from "./Header"
+import Tasks from "../pages/tasks/GetTasks"
+import FilterTasks from "./FilterTasks"
+
 export default function HomePage() {
+
     return (
-        <div>
-            <h1>Seja bem vindo</h1>
+        <div className="flex flex-col">
+          <Navegation/>
+            <FilterTasks/>
+            <Tasks/>
         </div>
     )
 }

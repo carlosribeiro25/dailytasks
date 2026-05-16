@@ -1,0 +1,210 @@
+/* ─── Layout Wrapper ─────────────────────────────────────────────────── */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── Container (max-width centred) ─────────────────────────────────── */
+.layout__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────── */
+.layout__header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.layout__header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.layout__logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────────── */
+.layout__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.layout__link {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.layout__link:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.layout__link--active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+/* ─── Hamburger (mobile only) ────────────────────────────────────────── */
+.layout__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.layout__hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text-h);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* Animate hamburger → X */
+.layout__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.layout__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.layout__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Mobile overlay ─────────────────────────────────────────────────── */
+.layout__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Main content ───────────────────────────────────────────────────── */
+.layout__main {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────── */
+.layout__footer {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BREAKPOINTS
+   - Mobile  : < 640px
+   - Tablet  : 640px – 1023px
+   - Desktop : ≥ 1024px
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Tablet (640px – 1023px) ────────────────────────────────────────── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .layout__container {
+    padding: 0 1.5rem;
+  }
+
+  .layout__header-inner {
+    padding: 0 1.5rem;
+  }
+
+  .layout__main {
+    padding: 2.5rem 0;
+  }
+}
+
+/* ─── Desktop (≥ 1024px) ─────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .layout__container {
+    padding: 0 2rem;
+  }
+
+  .layout__header-inner {
+    padding: 0 2rem;
+    height: 68px;
+  }
+
+  .layout__logo {
+    font-size: 1.4rem;
+  }
+
+  .layout__link {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  .layout__main {
+    padding: 3rem 0;
+  }
+}
+
+/* ─── Mobile (< 640px) ───────────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .layout__hamburger {
+    display: flex;
+  }
+
+  /* Nav becomes a slide-down drawer */
+  .layout__nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 0.75rem 1rem 1rem;
+  }
+
+  .layout__nav--open {
+    display: flex;
+  }
+
+  .layout__link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  .layout__main {
+    padding: 1.5rem 0;
+  }
+}
