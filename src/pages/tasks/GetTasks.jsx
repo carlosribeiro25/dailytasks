@@ -12,7 +12,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime"
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday"
 import AssignmentIcon from "@mui/icons-material/Assignment"
 import ResponsiveAppBar from '../../components/NavBar'
-import { ToggleStatusButton } from '../../components/toggleStatus'
+import { ToggleStatusButton } from '../../components/ToggleStatus'
 import AlertDialog from '../../components/Dialog'
 
 const priorityConfig = {
