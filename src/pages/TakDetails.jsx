@@ -18,7 +18,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import EditIcon from "@mui/icons-material/Edit";
 import ResponsiveAppBar from "../components/NavBar";
-import { getTaskById } from "../services/GetTaskId";
+import { getTaskById } from "../services/update-tesk";
 
 const priorityConfig = {
     alta:  { label: "Alta",  color: "error" },
@@ -150,6 +150,7 @@ export default function PageDetailTask() {
                                 )}
 
                                 <Divider />
+
 
                                 <Box className="flex flex-col sm:flex-row gap-3">
                                     <Button
