@@ -2,7 +2,7 @@ import React from 'react'
 import { deleleTask } from '../../components/ButonDeleteTask'
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { api } from "../../lib/Api"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {
     Alert, Box, Button, Card, CardActions, CardContent, Chip, CircularProgress, Container, Divider, Toolbar, Typography,
 } from "@mui/material"
@@ -73,8 +73,8 @@ export default function Tasks() {
     if (isError) {
         return (
             <Box className="flex items-center justify-center px-4 py-10">
-                <Alert severity="error" className="m-auto xs:w-8">
-                    Erro ao carregar tarefas: {error.message}
+                <Alert severity="error" className="m-auto mt-8 xs:w-8">
+                    Erro ao carregar tarefas: {error.message}. <Link to='/cadastrar'><strong>Clique aqui e cadastre uma tarefa!</strong></Link>
                 </Alert>
             </Box>
         )
@@ -82,9 +82,9 @@ export default function Tasks() {
 
     return (
         <>
-
             <ResponsiveAppBar />
             <Toolbar />
+            
 
             <Box className="py-8 px-6  sm:px-6 md:py-10">
                 <Container maxWidth="xl">
