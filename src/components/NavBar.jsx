@@ -14,8 +14,8 @@ import Divider from '@mui/material/Divider';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 const pages = [
-  { label: 'Tarefas', path: '/tasks' },
-  { label: 'Criar Tarefa', path: '/cadastrar' },
+  { label: 'Minhas Tarefas', path: '/tasks' },
+  { label: 'Criar tarefa', path: '/cadastrar' },
   { label: 'Filtro', path: '/tasks/filter' },
 ];
 

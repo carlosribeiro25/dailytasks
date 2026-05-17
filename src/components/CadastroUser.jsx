@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { api } from '../lib/Api';
-import {Alert, Box, Button, CircularProgress, Container, Paper, TextField,Toolbar, Typography,
+import {
+    Alert, Box, Button, CircularProgress, Container, IconButton, InputAdornment, Paper, TextField, Toolbar, Typography,
 } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +25,8 @@ export default function RegisterUser() {
     });
     const [success, setSuccess] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const mutation = useMutation({
         mutationFn: registerUser,
@@ -71,14 +76,14 @@ export default function RegisterUser() {
 
     return (
         <>
-            
+
             <Toolbar />
 
             <Box className="flex items-center justify-center py-10 px-4 sm:px-6">
                 <Container maxWidth="xs">
                     <Paper elevation={4} className="rounded-2xl overflow-hidden">
 
-                       
+
                         <Box className="bg-blue-600 px-6 py-5 flex items-center gap-3">
                             <PersonAddIcon className="text-white" fontSize="large" />
                             <Typography variant="h5" component="h1" className="font-bold text-white">
@@ -86,7 +91,7 @@ export default function RegisterUser() {
                             </Typography>
                         </Box>
 
-                     
+
                         <Box
                             component="form"
                             onSubmit={handleSubmit}
@@ -120,7 +125,7 @@ export default function RegisterUser() {
                             <TextField
                                 label="Senha"
                                 name="password"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 value={form.password}
                                 onChange={handleChange}
                                 placeholder="Mínimo 6 caracteres"
@@ -128,18 +133,49 @@ export default function RegisterUser() {
                                 required
                                 fullWidth
                                 variant="outlined"
+                                slotProps={{
+                                    input: {
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={() => setShowPassword((prev) => !prev)}
+                                                    edge="end"
+                                                    sx={{ color: 'rgba(112,128,144)' }}
+                                                    size='medium'
+                                                >
+                                                    {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
+                                    }
+                                }}
                             />
 
                             <TextField
                                 label="Confirmar senha"
                                 name="confirmPassword"
-                                type="password"
+                                type={showConfirmPassword ? 'text' : 'password'}
                                 value={form.confirmPassword}
                                 onChange={handleChange}
                                 placeholder="Repita a senha"
                                 required
                                 fullWidth
                                 variant="outlined"
+                                slotProps={{
+                                    input: {
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                                                    edge="end"
+                                                    sx={{ color: 'rgba(0,0,0,0.54)' }}
+                                                >
+                                                    {showConfirmPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
+                                    }
+                                }}
                             />
 
                             {errorMsg && (
@@ -169,12 +205,12 @@ export default function RegisterUser() {
                             >
                                 {mutation.isPending ? 'Cadastrando...' : 'Cadastrar'}
                             </Button>
-                        <Link className='text-blue-400 text-center justify-center ml-4' to='/login'> Voltar</Link>
+                            <Link className='text-blue-400 text-center justify-center ml-4' to='/login'> Voltar</Link>
                         </Box>
                     </Paper>
                 </Container>
 
-                
+
             </Box>
         </>
     );
