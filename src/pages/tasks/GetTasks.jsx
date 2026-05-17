@@ -158,10 +158,10 @@ export default function Tasks() {
                                     </Box>
                                 </CardContent>
 
-                                <CardActions className="px-4 pb-4 pt-0 flex gap-1 flex-wrap">
+                                <CardActions className="px-4 pb-4 pt-0 flex gap-1 ">
                                     <Button
                                         size="small"
-                                        variant="outlined"
+                                        variant="contained"
                                         startIcon={<VisibilityIcon />}
                                         onClick={() => navigate(`/tasks/${task.id}`)}
                                     >
@@ -170,8 +170,8 @@ export default function Tasks() {
                                     <Button
                                         size="small"
                                         
-                                        variant="outlined"
-                                        color="warning"
+                                        variant="contained"
+                                        color="success"
                                         startIcon={<EditIcon />}
                                         onClick={() => navigate(`/tasks/${task.id}/update`)}
                                     >

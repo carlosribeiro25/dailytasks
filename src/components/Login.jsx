@@ -41,10 +41,9 @@ export default function Login() {
             <Container maxWidth="xs" disableGutters>
                 <Paper elevation={4} className="rounded-2xl overflow-hidden w-full">
 
-                    <Box className="bg-gray-800 px-4 py-2 flex flex-col items-center gap-2">
-                        <LockOutlinedIcon className="text-white" fontSize="large" />
-                        <Typography variant="h5" component="h1" className="font-bold text-white">
-                           Bem vindo ao Dailytasks
+                    <Box className="bg-gray-800 px-4 py-4 flex flex-col items-center gap-2">
+                        <Typography variant="h5" component="h1" className="font-bold text-amber-50">
+                           Bem-vindo ao Dailytasks
                         </Typography>
                     </Box>
                    
