@@ -118,7 +118,7 @@ export default function Login() {
 
                         <div className='justify-center text-center flex'>
                             <Link to='/registerUser' >
-                                <p className='text-green-600'>Faça seu cadastro aqui ⬇</p><HowToRegIcon /> </Link>
+                                <p className='text-green-600'>Já tem conta?  Cadastre-se aqu ⬇</p><HowToRegIcon /> </Link>
                         </div>
                     </Box>
                 </Paper>
